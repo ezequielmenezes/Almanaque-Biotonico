@@ -1,0 +1,572 @@
+:root {
+    --bg: #f5e6c8;
+    --surface: rgba(255, 255, 255, 0.92);
+    --surface-strong: #ffffff;
+    --text: #2b2b2b;
+    --text-light: #575757;
+    --primary: #8b5e34;
+    --accent: #f0c987;
+    --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: radial-gradient(circle at top, rgba(248, 230, 205, 0.96), transparent 35%), #f5e6c8;
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, .button {
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(20, 20, 20, 0.35), rgba(62, 32, 8, 0.55)), url("img/capa.svg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(32, 19, 7, 0.5), rgba(20, 12, 4, 0.75));
+}
+
+.hero__top,
+.hero__content,
+.hero__top *,
+.hero__content * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.main-nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Mobile nav toggle */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.95);
+    font-size: 1.25rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 680px) {
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 72px;
+        right: 18px;
+        background: rgba(255,255,255,0.98);
+        color: var(--text);
+        flex-direction: column;
+        gap: 0;
+        padding: 8px;
+        border-radius: 12px;
+        min-width: 180px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        display: none;
+    }
+
+    .main-nav a {
+        padding: 10px 14px;
+        border-radius: 8px;
+        color: var(--text);
+    }
+
+    .main-nav.open {
+        display: flex;
+    }
+}
+
+.main-nav a {
+    color: rgba(255, 255, 255, 0.88);
+    transition: color 0.25s ease;
+}
+
+.main-nav a:hover {
+    color: var(--accent);
+}
+
+.hero__content {
+    max-width: 720px;
+}
+
+.hero__eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.45rem 0.9rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    line-height: 0.95;
+    margin-bottom: 1rem;
+    max-width: 10ch;
+}
+
+.hero__text {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 42rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 700;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 16px 40px rgba(138, 86, 36, 0.22);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.container {
+    width: min(1100px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 4rem 0 6rem;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.section-header span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+.section-header h2 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.sobre,
+.curiosidades,
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    backdrop-filter: blur(16px);
+    margin-bottom: 2rem;
+}
+
+.sobre p,
+.card__content p,
+.item p {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.card--reverse {
+    grid-template-columns: 1.2fr 1fr;
+}
+
+.card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    min-height: 320px;
+}
+
+.card__tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #3f2306;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.card__content h2 {
+    margin-top: 0.5rem;
+    font-size: 2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.item {
+    background: #ffffffee;
+    border-radius: 22px;
+    padding: 1.75rem;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item h3 {
+    margin-bottom: 0.85rem;
+}
+
+.item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 50px rgba(0, 0, 0, 0.12);
+}
+
+.item--link {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.item--link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(240, 201, 135, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.item--link:hover::before {
+    left: 100%;
+}
+
+.item--link:hover {
+    border-color: var(--primary);
+}
+
+.footer {
+    padding: 2rem 1rem;
+    text-align: center;
+    background: #2f1e11;
+    color: #f8e7cf;
+}
+
+.footer p {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+/* ===== PIADAS ===== */
+
+.piadas{
+    margin-top: 80px;
+}
+
+.piadas-grid{
+    display: grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+/* ===== RECEITAS ===== */
+
+.receitas {
+    margin-top: 80px;
+    padding: 2.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(240, 201, 135, 0.15));
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow);
+}
+
+.receitas .section-subtitle,
+.saude .section-subtitle {
+    max-width: 760px;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.receitas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.receita-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2rem;
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.09);
+    border: 1px solid rgba(240, 201, 135, 0.35);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.receita-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 68px rgba(0, 0, 0, 0.14);
+}
+
+.receita-card::before {
+    content: '🍽️';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.2rem;
+    opacity: 0.18;
+}
+
+.receita-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+}
+
+.receita-card h3 {
+    margin-bottom: 0.85rem;
+    font-size: 1.3rem;
+    color: #3f2306;
+}
+
+.receita-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ===== SAÚDE ===== */
+
+.saude {
+    margin-top: 80px;
+    padding: 2.5rem;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(222, 248, 241, 0.2));
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: var(--shadow);
+}
+
+.saude-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.saude-card {
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 2rem;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(159, 226, 201, 0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.saude-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.12);
+}
+
+.saude-card::before {
+    content: '💚';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2.2rem;
+    opacity: 0.18;
+}
+
+.saude-card h3 {
+    margin-bottom: 0.85rem;
+    font-size: 1.25rem;
+    color: #2b5b4c;
+}
+
+.saude-card p {
+    color: var(--text-light);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* CARD */
+
+.piada-card{
+    background: white;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.piada-card:hover{
+    transform: translateY(-5px);
+}
+
+/* BOTÃO */
+
+.piada-btn{
+    width: 100%;
+    display: block;
+    text-align: left;
+    border: none;
+    background: #8b5a2b;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.piada-btn:hover{
+    background: #6e451e;
+}
+
+.piada-btn:focus-visible {
+    outline: 3px solid rgba(240, 201, 135, 0.8);
+    outline-offset: 4px;
+}
+
+
+/* RESPOSTA */
+
+.piada-resposta{
+    display: none;
+    margin-top: 15px;
+    background: #f5e6c8;
+    padding: 15px;
+    border-radius: 10px;
+    color: #333;
+    text-align: left;
+}
+
+/* RESPOSTA APARECENDO */
+
+.piada-resposta.mostrar{
+    display: block !important;
+}
+
+@media (max-width: 850px) {
+    .hero__top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card,
+    .card--reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .card__image {
+        min-height: 260px;
+    }
+}
+
+@media (max-width: 680px) {
+    .hero {
+        padding: 24px 18px 32px;
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .section-header h2 {
+        font-size: clamp(1.8rem, 5vw, 2.4rem);
+    }
+
+    .receitas,
+    .saude,
+    .piadas {
+        padding: 1.8rem 1.5rem;
+    }
+}
+
